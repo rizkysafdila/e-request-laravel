@@ -64,3 +64,6 @@ Gunakan kredensial hasil seeder:
 1. Melihat semua request (termasuk yang dihapus)
 2. Bisa filter request (active/deleted)
 3. Bisa restore request dari Trash
+
+## 🔐 JWT Secret untuk Testing API
+Tambahkan **JWT_SECRET=ABCDE12345** pada .env jika belum ada
