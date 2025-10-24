@@ -9,22 +9,19 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="space-y-6">
         <div class="bg-white shadow rounded-lg p-6">
-          <h2 class="text-xl font-semibold mb-2">{{ $r->title }}</h2>
-          <p class="text-sm text-gray-600 mb-4">Type: {{ ucfirst($r->request_type) }}</p>
-          <p class="mb-4">{{ $r->description }}</p>
-
           <div class="mb-4">
             <span
-              class="px-2 py-1 text-xs rounded font-medium
-        @class([
-            'bg-gray-200 text-gray-800' => $r->status === 'draft',
-            'bg-yellow-100 text-yellow-800' => $r->status === 'submitted',
-            'bg-green-100 text-green-800' => $r->status === 'approved',
-            'bg-red-100 text-red-800' => $r->status === 'rejected',
-        ])">
+              class="inline-flex px-2 py-1 rounded-full text-xs font-semibold
+                @if ($r->status === 'draft') bg-gray-200 text-gray-800
+                @elseif($r->status === 'submitted') bg-yellow-100 text-yellow-800
+                @elseif($r->status === 'approved') bg-green-100 text-green-800
+                @elseif($r->status === 'rejected') bg-red-100 text-red-800 @endif">
               {{ ucfirst($r->status) }}
             </span>
           </div>
+          <h2 class="text-xl font-semibold mb-2">{{ $r->title }}</h2>
+          <p class="text-sm text-gray-600 mb-4">Type: {{ ucfirst($r->request_type) }}</p>
+          <p class="mb-4">{{ $r->description }}</p>
 
           @if ($r->attachment_path)
             <div class="mb-4">
